@@ -1,0 +1,8 @@
+.button {
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    background-color: #000000;
+}
+.button:hover{
+    background-color: var(--neutral-gray);
+}
