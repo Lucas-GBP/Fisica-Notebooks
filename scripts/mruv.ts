@@ -59,15 +59,14 @@ export function mruvEquation(data:mruvProps, type:mruv){
     return equations[type]();
 };
 
-type overTime = {
+export function positionOverTime(data:{
     x_0:number // posição inicial
     v_0:number // velocidade inicial
     a:number // aceleração
-    t_0:number
-    t_f:number
-    tIncrement:number
-}
-export function positionOverTime(data:overTime){
+    t_0:number //tempo inicial
+    t_f:number //tempo final
+    tIncrement:number //incrmento do tempo
+}){
     const result:{time:number, position:number}[] = [];
     for(let t = data.t_0; t <= data.t_f; t+=data.tIncrement){
         result.push({time:t, position:position(data.x_0, data.v_0, data.a, t)});
@@ -76,10 +75,31 @@ export function positionOverTime(data:overTime){
     return result;
 }
 
-export function velocityOverTime(data:overTime){
+export function velocityOverTime(data:{
+    v_0:number // velocidade inicial
+    a:number // aceleração
+    t_0:number //tempo inicial
+    t_f:number //tempo final
+    tIncrement:number //incrmento do tempo
+}){
     const result:{time:number, velocity:number}[] = [];
     for(let t = 0; t <= (data.t_f-data.t_0); t+=data.tIncrement){
         result.push({time:t, velocity: (data.v_0+data.a*t)});
+    }
+
+    return result;
+}
+
+export function timeOverVelocity(data:{
+    v_0:number // velocidade inicial
+    v_f:number // velocidade final
+    a:number // aceleração
+    vIncrement:number // incremento da velocidade
+}){
+    const result:{velocity:number, time:number}[] = [];
+    for(let v = data.v_0; v <= data.v_f; v+=data.vIncrement){
+        console.log(v);
+        result.push({velocity:v, time:(v-data.v_0)/data.a})
     }
 
     return result;

@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { FC } from "react";
-import { positionOverTime, velocityOverTime } from "@/scripts/mruv";
+import { positionOverTime, velocityOverTime, timeOverVelocity } from "@/scripts/mruv";
 
 const MRUVFor:NextPage = () => {
   return <>
@@ -18,11 +18,22 @@ const MRUVFor:NextPage = () => {
           </ul>
         </li>
         <li>
-          <ul className="">
-            {velocityOverTime({x_0:0.000, v_0:-1.000, a:1.000, t_0:0, t_f:0.100, tIncrement:0.025}).map((item, index) => {
+          <ul>
+            {velocityOverTime({v_0:-1.000, a:1.000, t_0:0, t_f:0.100, tIncrement:0.025}).map(
+              (item, index) => {
               return <li key={index}>
                 time: ${item.time.toFixed(3)}s$, velocidade: ${item.velocity.toFixed(3)}m/s$
               </li>;}
+            )}
+          </ul>
+        </li>
+        <li>
+          <ul>
+            {timeOverVelocity({v_0:-0.900, v_f:-0.801, vIncrement:0.020, a:1.000}).map(
+              (item, index) => {
+                return <li key={index}>
+                  velocidade: ${item.velocity.toFixed(3)}m/s$, time: ${item.time.toFixed(3)}s$
+                </li>;}
             )}
           </ul>
         </li>
