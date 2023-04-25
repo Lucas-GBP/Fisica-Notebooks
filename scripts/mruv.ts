@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export enum mruv {inicialPosition, inicialVelocity, aceleration, time, position};
 
 type mruvProps = {

@@ -10,7 +10,9 @@ const MRUVFor:NextPage = () => {
       <ul className="list-decimal">
         <li>
           <ul className="">
-            {positionOverTime({x_0:0.000, v_0:-1.000, a:1.000, t_0:0, t_f:0.100, tIncrement:0.025}).map((item, index) => {
+            {positionOverTime({
+              x_0:0.000, v_0:-1.000, a:1.000, t_0:0, t_f:0.100, tIncrement:0.025
+            }).map((item, index) => {
               return <li key={index}>
                 time: ${item.time.toFixed(3)}s$, posição: ${item.position.toFixed(3)}m$
               </li>;}
@@ -21,9 +23,9 @@ const MRUVFor:NextPage = () => {
           <ul>
             {velocityOverTime({v_0:-1.000, a:1.000, t_0:0, t_f:0.100, tIncrement:0.025}).map(
               (item, index) => {
-              return <li key={index}>
+                return <li key={index}>
                 time: ${item.time.toFixed(3)}s$, velocidade: ${item.velocity.toFixed(3)}m/s$
-              </li>;}
+                </li>;}
             )}
           </ul>
         </li>
