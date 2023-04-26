@@ -103,25 +103,25 @@ export function timeOverVelocity(data:{
     return result;
 }
 
-function inicialPosition(v_0:number,
+export function inicialPosition(v_0:number,
     a:number,
     t:number,
     x:number){
     return x - v_0*t - 0.5*a*(t**2);
 };
-function inicialVelocity(x_0:number,
+export function inicialVelocity(x_0:number,
     a:number,
     t:number,
     x:number){
     return (x-x_0)/t - 0.5*a*t;
 };
-function aceleration(x_0:number,
+export function aceleration(x_0:number,
     v_0:number,
     t:number,
     x:number){
     return 2*(x - x_0 - v_0*t)/(t**2);
 };
-function time(x_0:number,
+export function time(x_0:number,
     v_0:number,
     a:number,
     x:number){
@@ -131,7 +131,7 @@ function time(x_0:number,
         (-v_0-delta)/a,
     ];
 };
-function position(x_0:number,
+export function position(x_0:number,
     v_0:number,
     a:number,
     t:number){

@@ -1,18 +1,45 @@
 import { NextPage } from "next";
 import { FC } from "react";
-import { positionOverTime } from "@/scripts/mruv";
+import numFor from "@/scripts/format";
+import { time } from "@/scripts/mruv";
 
 const MRUVDoWhile:NextPage = () => {
   const c_1 = {x_0: 0.00, v_0: -1.00, a: 1.00, timeGap: 1.00, v_max: 10.00};
   const c_2 = {x_0: 0.00, v_0:0.00, a: 10.00, xGap:2.00, tMax:1.50};
 
   const problem_1 = (
-    c:{x_0:Number, v_0:Number, a:Number, timeGap:Number, v_max:Number}
-  ):{t:Number, x:Number, v:Number}[] => {
-    const result:{t:Number, x:Number, v:Number}[] = [{t:0, x:c.x_0, v:c.v_0}];
+    c:{x_0:number, v_0:number, a:number, timeGap:number, v_max:number}
+  ) => {
+    const result:{t:number, x:number, v:number}[] = [{t:0, x:c.x_0, v:c.v_0}];
 
-    for(let i = 0; result[i].v > c.v_max; i++){
-      
+    for(let i = 0; result[i].v <= c.v_max; i++){
+      const t = (i+1)*c.timeGap;
+
+      result.push({
+        t: t,
+        v: c.v_0 + c.a*t,
+        x: c.x_0 + t*(c.v_0 + 0.5*c.a*t),
+      });
+    }
+
+    return result;
+  };
+
+  const problem_2 = (c:{
+    x_0: number;
+    v_0: number;
+    a: number;
+    xGap: number;
+    tMax: number;
+  }) => {
+    const result:{x:number, t:number}[] = [{x:c.x_0, t:0}];
+
+    for(let i = 0; result[i].t <= 1.50; i++){
+      const x = result[i].x + 2.00;
+      result.push({
+        x: x,
+        t: time(c.x_0, c.v_0, c.a, x)[0]
+      })
     }
 
     return result;
@@ -23,14 +50,28 @@ const MRUVDoWhile:NextPage = () => {
       <Enunciado/>
     </section>
     <section>
-      <ol className="list-decimal">
-        <li>
-          {}
-        </li>
-        <li>
-
-        </li>
-      </ol>
+      <dl>
+        <dt>Exercício 01</dt>
+        <dd>
+          <ul className="list-none">
+          {problem_1(c_1).map((item, index) => {
+            return <li key={index}>
+              t: ${numFor(item.t, 2)}s$; x: ${numFor(item.x, 2)}m$; v: ${numFor(item.v, 2)}m/s$
+            </li>;
+          })}
+          </ul>
+        </dd>
+        <dt>Exercício 02</dt>
+        <dd>
+          <ul className="list-none">
+            {problem_2(c_2).map((item, index) => {
+              return <li key={index}>
+                x: ${numFor(item.x, 2)}m$; t: ${numFor(item.t, 2)}s$
+              </li>;
+            })}
+            </ul>
+        </dd>
+      </dl>
     </section>
   </>;
 };
