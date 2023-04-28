@@ -2,7 +2,7 @@
 import { MathJaxContext } from "better-react-mathjax";
 import { mathConfig } from "../layout";
 
-export default function({
+export default function notebookLayout({
   children,
 }: {
     children: React.ReactNode

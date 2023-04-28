@@ -9,7 +9,6 @@ export const metadata = {
 };
 
 export const mathConfig = {
-  loader: { load: ["[tex]/html"] },
   tex: {
     packages: { "[+]": ["html"] },
     inlineMath: [
