@@ -39,7 +39,7 @@ const MRUVDoWhile:NextPage = () => {
       result.push({
         x: x,
         t: time(c.x_0, c.v_0, c.a, x)[0]
-      })
+      });
     }
 
     return result;
@@ -54,11 +54,11 @@ const MRUVDoWhile:NextPage = () => {
         <dt>Exercício 01</dt>
         <dd>
           <ul className="list-none">
-          {problem_1(c_1).map((item, index) => {
-            return <li key={index}>
+            {problem_1(c_1).map((item, index) => {
+              return <li key={index}>
               t: ${numFor(item.t, 2)}s$; x: ${numFor(item.x, 2)}m$; v: ${numFor(item.v, 2)}m/s$
-            </li>;
-          })}
+              </li>;
+            })}
           </ul>
         </dd>
         <dt>Exercício 02</dt>
@@ -69,7 +69,7 @@ const MRUVDoWhile:NextPage = () => {
                 x: ${numFor(item.x, 2)}m$; t: ${numFor(item.t, 2)}s$
               </li>;
             })}
-            </ul>
+          </ul>
         </dd>
       </dl>
     </section>
