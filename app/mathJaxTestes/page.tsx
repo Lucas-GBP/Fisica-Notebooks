@@ -2,7 +2,7 @@
 import { FC, useState } from "react";
 import { MathJaxContext, MathJax } from "better-react-mathjax";
 import StyleButton from "@/components/StyleButton";
-import { mathConfig } from "../layout";
+import { mathConfig } from "@/scripts/mathJaxConsts";
 
 const MathJaxTestes:FC = () => {
   return <div className="px-6">
@@ -10,7 +10,7 @@ const MathJaxTestes:FC = () => {
       <h1>MathJax Testes</h1>
     </div>
     <div className="divStyle">
-      <MathJaxContext config={mathConfig}>
+      <MathJaxContext config={mathConfig} version={3}>
         {`
         \\begin{equation}
           \\vec{F} = \\frac{d[m\\vec{v}]}{dt}

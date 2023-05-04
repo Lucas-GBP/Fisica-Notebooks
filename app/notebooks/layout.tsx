@@ -1,6 +1,6 @@
 'use client';
 import { MathJaxContext } from "better-react-mathjax";
-import { mathConfig } from "../layout";
+import { mathConfig } from "@/scripts/mathJaxConsts";
 
 export default function notebookLayout({
   children,
@@ -8,7 +8,7 @@ export default function notebookLayout({
     children: React.ReactNode
   }) {
   return (
-    <MathJaxContext config={mathConfig}>
+    <MathJaxContext config={mathConfig} version={3}>
       {children}
     </MathJaxContext>
   );
