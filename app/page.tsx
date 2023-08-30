@@ -1,5 +1,10 @@
 import StyleButton from '@/components/StyleButton';
 
+export const metadata = {
+  title: "Physics App",
+  icons: "/favicon.ico",
+};
+
 export default function Home() {
   return (
     <>

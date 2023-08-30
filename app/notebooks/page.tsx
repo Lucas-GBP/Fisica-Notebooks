@@ -14,6 +14,9 @@ const notebooks:NextPage = () => {
         <li>
           <StyleButton href="./notebooks/MRUV_do_while">MRUV, do ... while (...)</StyleButton>
         </li>
+        <li>
+          <StyleButton href="./notebooks/Numeros_aleatorios,_if_(...)_..._else">Números aleatórios, if (...) ... else ...</StyleButton>
+        </li>
       </ul>
     </section>
   </>;
